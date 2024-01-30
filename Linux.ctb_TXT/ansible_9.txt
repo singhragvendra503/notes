@@ -1,0 +1,64 @@
+# ansible
+(base) chicmic@chicmic-Macmini:~$ nano /etc/ansible/ansible.cfg 
+(base) chicmic@chicmic-Macmini:~$ sudo nano /etc/ansible/hosts
+(base) chicmic@chicmic-Macmini:~$ ansible all -m ping
+The authenticity of host '3.88.131.8 (3.88.131.8)' can't be established.
+ED25519 key fingerprint is SHA256:5PLNRHjygVrbQc1WXzlOlR8yN4fSVIrCPpfN2P4tvto.
+This key is not known by any other names
+The authenticity of host '34.168.168.113 (34.168.168.113)' can't be established.
+ED25519 key fingerprint is SHA256:JfuA5H25HwHblosItW8qsrlF1Ei+ZHlktJySAl83jyE.
+This key is not known by any other names
+The authenticity of host '44.204.73.60 (44.204.73.60)' can't be established.
+ED25519 key fingerprint is SHA256:x8nr+I4b1lzlEB1sdFBZkpvhbziZVY0GVPlxZJk5kNY.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? ^C [ERROR]: User interrupted execution
+(base) chicmic@chicmic-Macmini:~$ sudo nano /etc/ansible/ansible.cfg
+(base) chicmic@chicmic-Macmini:~$ ansible all -m ping
+34.168.168.113 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+3.88.131.8 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+44.204.73.60 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+(base) chicmic@chicmic-Macmini:~$ ansible all -a "df -h"
+3.88.131.8 | CHANGED | rc=0 >>
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       7.6G  1.6G  6.0G  21% /
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  832K  190M   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/xvda15     105M  6.1M   99M   6% /boot/efi
+tmpfs            95M  4.0K   95M   1% /run/user/1000
+34.168.168.113 | CHANGED | rc=0 >>
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        20G  1.9G   18G  10% /
+tmpfs           2.0G     0  2.0G   0% /dev/shm
+tmpfs           781M  936K  780M   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/sda15      105M  6.1M   99M   6% /boot/efi
+tmpfs           391M  4.0K  391M   1% /run/user/1000
+44.204.73.60 | CHANGED | rc=0 >>
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       7.6G  1.6G  6.0G  21% /
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  832K  190M   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/xvda15     105M  6.1M   99M   6% /boot/efi
+tmpfs            95M  4.0K   95M   1% /run/user/1000
+(base) chicmic@chicmic-Macmini:~$ 
+

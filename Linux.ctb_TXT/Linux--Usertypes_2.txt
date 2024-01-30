@@ -1,0 +1,41 @@
+## Usertypes
+In Linux, there are several types of users, each with specific roles and permissions. The primary types of users in a Linux system are:
+1. Root User (Superuser): The root user, also known as the superuser, is the most powerful user on a Linux system. It has unrestricted access to all system files and commands, allowing it to make changes that can affect the entire system. The root user is typically used for system administration tasks.
+
+2. Regular Users: Regular users are standard user accounts created for individuals who use the system for everyday tasks. They have limited permissions and can only modify their own files and settings.
+
+3. System Users: System users are used by system processes and services to run various system tasks. These accounts typically have restricted access and are not meant for human interaction. They often have no shell access (i.e., they can't log in interactively).
+
+4. Service Users: These are users created for specific services or applications running on the system. Service users are used to isolate the permissions of different services for security reasons.
+
+5. Group Users: Users can belong to one or more groups, which allows administrators to manage permissions more efficiently. Group users can share access to certain files and directories based on the group's permissions.
+
+6. Anonymous Users: Some services, like FTP, may have anonymous users who can log in using a default username and password, often with limited access.
+
+7. Guest Users: Some Linux distributions may have a guest user account, which is a temporary and restricted account typically used for temporary access. It is often disabled by default for security reasons.
+
+8. Sudo Users: Sudo (short for "superuser do") is a command that allows regular users to execute commands with superuser privileges temporarily. Users granted sudo access are referred to as sudo users.
+
+1. Root and Administrative Users:
+• root: The superuser with UID 0, which has full system access.
+• chicmic: Likely a regular user with shell access (UID 1000).
+
+
+
+• System Users:
+• jenkins: A user associated with the Jenkins automation server (UID 131).
+• nova: Possibly associated with OpenStack Nova (UID 130).
+◇ daemon, bin, sys, sync, games, man, lp, mail, news, uucp, proxy, www-data, backup, list, irc, gnats, nobody, systemd-network, systemd-resolve, messagebus, systemd-timesync, syslog, _apt, tss, uuidd, systemd-oom, tcpdump, avahi-autoipd, usbmux, dnsmasq, kernoops, avahi, cups-pk-helper, rtkit, whoopsie, sssd, speech-dispatcher, fwupd-refresh, nm-openvpn, saned, colord, geoclue, pulse, gnome-initial-setup, hplip, gdm: These are various system users used by different system processes and services. They usually have restricted shell access or no shell access at all.
+
+
+• Service Users:
+◇ tomcat: Likely associated with the Tomcat application server (UID 1001).
+◇ mattermost: Possibly associated with the Mattermost messaging platform (UID 999).
+
+Difference between adduser and useradd command
+
+   
+
+
+
+

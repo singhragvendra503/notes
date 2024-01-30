@@ -1,0 +1,231 @@
+## LinuxFileSystem
+Linux File System: In linux everything will be treated as file only and file system like tree structure.
+• Ordinary files (Contain directly content Ex.  .txt, audio, video etc)
+• Directory files (Contain ordinary and directory files)
+• Devices files (These files represent physical or virtual devices on a system and allow for communication between the kernel and user-space processes.)
+
+
+   
+   
+   
+(base) chicmic@chicmic-Macmini:/$ tree -L 2 --prune -I 'proc|tty*|loop*'
+.
+├── boot
+│   ├── config-6.2.0-31-generic
+│   ├── config-6.2.0-32-generic
+│   ├── initrd.img -> initrd.img-6.2.0-32-generic
+│   ├── initrd.img-6.2.0-31-generic
+│   ├── initrd.img-6.2.0-32-generic
+│   ├── initrd.img.old -> initrd.img-6.2.0-31-generic
+│   ├── memtest86+.bin
+│   ├── memtest86+.elf
+│   ├── memtest86+_multiboot.bin
+│   ├── System.map-6.2.0-31-generic
+│   ├── System.map-6.2.0-32-generic
+│   ├── vmlinuz -> vmlinuz-6.2.0-32-generic
+│   ├── vmlinuz-6.2.0-31-generic
+│   ├── vmlinuz-6.2.0-32-generic
+│   └── vmlinuz.old -> vmlinuz-6.2.0-31-generic
+├── dev
+│   ├── autofs
+│   ├── btrfs-control
+│   ├── console
+│   ├── core -> /proc/kcore
+│   ├── cpu_dma_latency
+│   ├── cuse
+│   ├── drm_dp_aux0
+│   ├── drm_dp_aux1
+│   ├── ecryptfs
+│   ├── fb0
+│   ├── full
+│   ├── fuse
+│   ├── hidraw0
+│   ├── hidraw2
+│   ├── hidraw4
+│   ├── hidraw5
+│   ├── hpet
+│   ├── hwrng
+│   ├── initctl -> /run/initctl
+│   ├── kmsg
+│   ├── kvm
+│   ├── log -> /run/systemd/journal/dev-log
+│   ├── mcelog
+│   ├── mei0
+│   ├── mem
+│   ├── mtd0
+│   ├── mtd0ro
+│   ├── null
+│   ├── nvram
+│   ├── port
+│   ├── ppp
+│   ├── psaux
+│   ├── ptmx
+│   ├── random
+│   ├── rfkill
+│   ├── rtc -> rtc0
+│   ├── rtc0
+│   ├── sda
+│   ├── sda1
+│   ├── sda2
+│   ├── sg0
+│   ├── snapshot
+│   ├── stderr -> /proc/self/fd/2
+│   ├── stdin -> /proc/self/fd/0
+│   ├── stdout -> /proc/self/fd/1
+│   ├── udmabuf
+│   ├── uhid
+│   ├── uinput
+│   ├── urandom
+│   ├── userfaultfd
+│   ├── userio
+│   ├── vboxdrv
+│   ├── vboxdrvu
+│   ├── vboxnetctl
+│   ├── vcs
+│   ├── vga_arbiter
+│   ├── vhci
+│   ├── vhost-net
+│   ├── vhost-vsock
+│   ├── zero
+│   └── zfs
+├── etc
+│   ├── adduser.conf
+│   ├── anacrontab
+│   ├── apg.conf
+│   ├── appstream.conf
+│   ├── bash.bashrc
+│   ├── bash_completion
+│   ├── bindresvport.blacklist
+│   ├── brlapi.key
+│   ├── brltty.conf
+│   ├── ca-certificates.conf
+│   ├── ca-certificates.conf.dpkg-old
+│   ├── crontab
+│   ├── debconf.conf
+│   ├── debian_version
+│   ├── deluser.conf
+│   ├── e2scrub.conf
+│   ├── environment
+│   ├── ethertypes
+│   ├── fprintd.conf
+│   ├── fstab
+│   ├── fuse.conf
+│   ├── gai.conf
+│   ├── group
+│   ├── group-
+│   ├── gshadow
+│   ├── gshadow-
+│   ├── hdparm.conf
+│   ├── host.conf
+│   ├── hostid
+│   ├── hostname
+│   ├── hosts
+│   ├── hosts.allow
+│   ├── hosts.deny
+│   ├── inputrc
+│   ├── issue
+│   ├── issue.net
+│   ├── kernel-img.conf
+│   ├── kerneloops.conf
+│   ├── ld.so.cache
+│   ├── ld.so.conf
+│   ├── legal
+│   ├── libao.conf
+│   ├── libaudit.conf
+│   ├── locale.alias
+│   ├── locale.gen
+│   ├── localtime -> /usr/share/zoneinfo/Asia/Kolkata
+│   ├── login.defs
+│   ├── logrotate.conf
+│   ├── lsb-release
+│   ├── machine-id
+│   ├── magic
+│   ├── magic.mime
+│   ├── mailcap
+│   ├── mailcap.order
+│   ├── manpath.config
+│   ├── mecabrc
+│   ├── mime.types
+│   ├── mke2fs.conf
+│   ├── modules
+│   ├── mtab -> ../proc/self/mounts
+│   ├── nanorc
+│   ├── netconfig
+│   ├── networks
+│   ├── nftables.conf
+│   ├── nsswitch.conf
+│   ├── os-release -> ../usr/lib/os-release
+│   ├── pam.conf
+│   ├── papersize
+│   ├── passwd
+│   ├── passwd-
+│   ├── pnm2ppa.conf
+│   ├── printcap -> /run/cups/printcap
+│   ├── profile
+│   ├── protocols
+│   ├── resolv.conf -> ../run/systemd/resolve/stub-resolv.conf
+│   ├── rmt -> /usr/sbin/rmt
+│   ├── rpc
+│   ├── rsyslog.conf
+│   ├── rygel.conf
+│   ├── sensors3.conf
+│   ├── services
+│   ├── shadow
+│   ├── shadow-
+│   ├── shells
+│   ├── subgid
+│   ├── subgid-
+│   ├── subuid
+│   ├── subuid-
+│   ├── sudo.conf
+│   ├── sudoers
+│   ├── sudo_logsrvd.conf
+│   ├── sysctl.conf
+│   ├── timezone
+│   ├── ucf.conf
+│   ├── usb_modeswitch.conf
+│   ├── vdpau_wrapper.cfg
+│   ├── vtrgb -> /etc/alternatives/vtrgb
+│   ├── wgetrc
+│   ├── xattr.conf
+│   └── zsh_command_not_found
+├── run
+│   ├── acpid.pid
+│   ├── acpid.socket
+│   ├── crond.pid
+│   ├── crond.reboot
+│   ├── docker.pid
+│   ├── docker.sock
+│   ├── gdm3.pid
+│   ├── initctl
+│   ├── snapd-snap.socket
+│   ├── snapd.socket
+│   ├── ufw.lock
+│   ├── unattended-upgrades.lock
+│   ├── unattended-upgrades.progress
+│   └── utmp
+├── snap
+│   └── README
+├── swapfile
+└── tmp
+│    └── winstone3507041280179040352.jar
+│       └── zramctl
+└── var
+    ├── cache
+    │   └── motd-news
+    ├── lib
+    │   └── shells.state
+    └── log
+        ├── alternatives.log
+        ├── auth.log
+        ├── btmp
+        ├── cloud-init-output.log
+        ├── cloud-init.log
+        ├── dmesg
+        ├── dpkg.log
+        ├── kern.log
+        ├── lastlog
+        ├── syslog
+        ├── ubuntu-advantage.log
+        └── wtmp
+

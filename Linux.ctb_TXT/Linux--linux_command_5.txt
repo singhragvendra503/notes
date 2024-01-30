@@ -1,0 +1,235 @@
+## linux_command
+ls - list directory contents
+SYNOPSIS
+       ls [OPTION]... [FILE]...
+DESCRIPTION
+       List information about the FILEs (the current directory by default).  Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+-a, --all
+              do not ignore entries starting with .
+--author
+              with -l, print the author of each file
+--file-type
+              likewise, except do not append '*'
+-h, --human-readable
+              with -l and -s, print sizes like 1K 234M 2G etc.
+-l     use a long listing format
+-i, --inode
+              print the index number of each file
+-r, --reverse
+              reverse order while sorting
+-R, --recursive
+              list subdirectories recursively
+-s, --size
+              print the allocated size of each file, in blocks
+
+-S     sort by file size, largest first
+-t     sort by time, newest first; see --time
+
+   
+
+   
+
+   
+
+tree - list contents of directories in a tree-like format.
+SYNOPSIS
+       tree  [-acdfghilnpqrstuvxACDFJQNSUX]  [-L  level  [-R]]  [-H baseHREF] [-T title] [-o filename] [-P pattern] [-I pattern] [--gitignore] [--matchdirs] [--metafirst]
+       [--ignore-case] [--nolinks] [--inodes] [--device] [--sort[=]name]  [--dirsfirst]  [--filesfirst]  [--filelimit  #]  [--si]  [--du]  [--prune]  [--timefmt[=]format]
+       [--fromfile] [--info] [--noreport] [--version] [--help] [--] [directory ...]
+       
+-a     All  files  are  printed.   By  default tree does not print hidden files (those beginning with a dot `.').  In no event does tree print the file system con‐
+              structs `.' (current directory) and `..' (previous directory).
+ -d     List directories only.
+
+-l     Follows symbolic links if they point to directories, as if they were directories. Symbolic links that will result in recursion are avoided when detected.
+
+-f     Prints the full path prefix for each file.
+-L level   (tree -L 3  --prune ‘proc|vnc*’)
+              Max display depth of the directory tree.
+--gitignore
+              Uses git .gitignore files for filtering files and directories.  Also uses $GIT_DIR/info/exclude if present.
+--prune
+              Makes tree prune empty directories from the output, useful when used in conjunction with -P or -I.  See BUGS AND NOTES below for more  information  on  this
+              option.
+
+find - search for files in a directory hierarchy
+
+find . -type f -empty (print all empty file recurresively)
+find . -type d -empty (print all empty directory recurresively)
+
+find ~ -name mithun.sh: It will search the mithun.sh file under logged in user homedirectory.
+find . -name mithun.sh: It will search the mithun.sh file under current directory.
+find . -iname mithun.sh: It will search the mithun.sh file under current directory ignoring the case.
+find . -type f -perm 0777: It will search all the files which have 777 permissions.
+find . -perm /a=x: It will search all the files which have execute permissions.
+find . -type f-empty: It will search all the empty files.
+find . -type f-name ".*": It will search all the hidden files in current directory.
+find / -name <<FileName>>: It will display the all files which we provide the name.
+find / -name apachectl : It will display the all the locations, where the file apachectl is available.
+find / -iname apachectl : It will display the all the locations, where the file apachectl is available.Here case insensitive.
+find. -mtime 1: It will find all the files modified exact 1 day in current directory.
+find / -mtime 1: It will find all the files modified exact 1 day in all directories.
+find. -mtime -1: It will find all the files modified less than 1 day s than 1 day 
+find. -mtime +1: It will find all the files modified more than 1 day
+find / -mmin -10: It will locate/display the files which modified less than 10 minutes ago.
+find / -perm 600: It will displays the files and directories which have the 600 permissions.-perm option is used to find files based upon permissions.
+find. -name "*.java" | xargs grep "FTPReadXML": It will displays java files which have the FTPReadXML word in those files.
+find. -name "*.java" -exec chmod 700 '{}' \;: It will set the access permissions (700) for all java files. The argument '{}' inserts each found file into the chmod command line. The \; argument indicates the exec command line has ended.
+find. -size +1000c -exec Is -1} \;: It will display the files which size greater than 1000bytes.
+find /logs/ -mmin +30 -exec rm -f {} \;: It will remove the logs which are created more than 30 minutes back in /logs directory.
+find. -name "**" -Is | awk '{print $7" "$11}' | sort -rn | head -n 10: Find ten largest files in the current directory and recursion through all subdirectories
+
+
+
+								umask				default file				default dir
+root							0022						644						755
+Normal User				0002						664						775
+
+umask
+Base Permissions for file is (Normal User) 		0666
+																 (-)0002
+																 -----------
+												 					  664
+																 -----------
+Base Permissions for dir is (Normal User) 		0777
+																(-)0002
+																 -----------
+																	0775
+																 -----------
+																
+Base Permissions for file is (root User) 			0666
+																 (-)0022
+																 -----------
+												 					  644
+																 -----------
+Base Permissions for dir is (root User) 			0777
+																(-)0022
+																 -----------
+																	0755
+																 -----------
+																
+chmod 777 <fileName/directoryName>
+	OR
+chmod +rwx u+rwx,go+rw <fileName/directoryName>
+chmod u+rwx, go+rw  <fileName/directoryName>
+	OR
+chmod u+rwx, g+rw, o+rw  <fileName/directoryName>
+
+sudo su - : It will switch to the root user, it will point to the root user HD and will load the root user configurations.
+sudo su : It will switch to the root user, it will not point to the root user HD and will not load the root user configurations.
+What is the root user home directory?
+a) / 	   →  root dir parent dir 
+b)/root → root user home dir 
+c)/home/root 
+d) NA
+
+chown <userName> <fileName>                          ----------------> change user ownership for file or directory
+chown ubuntu demo.txt										   ----------------> 
+chgrp <groupName> <fileName>						   ----------------> change group ownership for file or directory
+chgrp ubuntu demo.txt										   ----------------> 
+chown <userName>:<groupName> <fileName>   ----------------> change user and group ownership for file or directory
+chown ubuntu:ubuntu demo.txt
+chown -R <userName>:<groupName> <directoryName>   ----------------> change user and group ownership for directory recursively 
+
+head <fileName> show top 10 lines of file
+head -n <numberoflines> <fileName>
+head -n 25 <fileName> show top 25 lines of file
+	OR
+head 25 <fileName> 
+
+tail command more usefule for logs watching
+tail <fileName> show last 10 lines of file
+tail -n 25 <fileName> show last 25 lines of file
+	OR
+tail 25 <fileName> 
+tail -f <fileName> This is showing floating logs 
+
+sed -n "<linenumber>" fileName
+sed -n "100" fileName   Show 100th line 
+sed -n "<Fromlinenumber>, <Tolinenumber>" fileName
+sed -n "100, 105" fileName
+cat -n fileName         print all content of file with line number
+
+
+
+ubuntu@ip-172-31-45-93:~$ who
+ubuntu   pts/0        2023-09-15 04:24 (122.160.165.213)
+ubuntu@ip-172-31-45-93:~$ who -H
+NAME     LINE         TIME             COMMENT
+ubuntu   pts/0        2023-09-15 04:24 (122.160.165.213)
+ubuntu@ip-172-31-45-93:~$ w
+ 06:05:22 up 1 day, 22:47,  1 user,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   	 JCPU   PCPU WHAT
+ubuntu   pts/0    122.160.165.213  04:24    2.00s  0.07s  0.00s w
+ubuntu@ip-172-31-45-93:~$ uptime
+ 06:05:33 up 1 day, 22:47,  1 user,  load average: 0.00, 0.00, 0.00
+ 
+ubuntu@ip-172-31-45-93:~$ pstree
+systemd─┬─acpid
+        ├─2*[agetty]
+        ├─amazon-ssm-agen───7*[{amazon-ssm-agen}]
+        ├─chronyd───chronyd
+        ├─containerd───6*[{containerd}]
+        ├─containerd-shim─┬─postgres───12*[postgres]
+        │                 └─12*[{containerd-shim}]
+        ├─containerd-shim─┬─python───14*[{python}]
+        │                 └─11*[{containerd-shim}]
+        ├─cron
+        ├─dbus-daemon
+        ├─dockerd─┬─2*[docker-proxy───6*[{docker-proxy}]]
+        │         └─11*[{dockerd}]
+        ├─multipathd───6*[{multipathd}]
+        ├─networkd-dispat
+        ├─packagekitd───2*[{packagekitd}]
+        ├─polkitd───2*[{polkitd}]
+        ├─rsyslogd───3*[{rsyslogd}]
+        ├─snapd───7*[{snapd}]
+        ├─sshd───sshd───sshd───bash───pstree
+        ├─systemd───(sd-pam)
+        ├─systemd-journal
+        ├─systemd-logind
+        ├─systemd-network
+        ├─systemd-resolve
+        ├─systemd-udevd
+        └─unattended-upgr───{unattended-upgr}
+ 
+ ubuntu@ip-172-31-45-93:~$ vmstat
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 0  0      0 145204  18588 392788    0    0    31    61   43  105  1  0 99  0  0
+ 
+ How Is The Environment Established?
+ When we log on to the system, the bash program starts, and reads a series of configuration scripts called startup files, which define the default environment shared by all users.This is followed by more startup files in our home directory that define our personal environment. The exact sequence depends on the type of shell session being started. There aretwo kinds.
+ • A login shell session: A login shell session is one in which we are prompted forour username and password. This happens when we start a virtual console session,for example.
+  
+  Startup Files for Login Shell Sessions
+    
+ • A non-login shell session: A non-login shell session typically occurs when we launch a terminal session in the GUI.
+ 
+ Startup Files for Non-Login Shell Sessions
+    
+ 
+ To generate an Ubuntu user password that expires in 60 days
+sudo adduser newuser
+ or
+sudo passwd existinguser
+ 
+sudo chage -M 60 username    → The -M flag sets the maximum number of days between password changes. In this example, it sets the maximum password age to 60 days.
+sudo chage -l username         → Verify the password expiration settings by using the chage command with the -l flag:
+
+Last password change                                    : Jun 29, 2023
+Password expires                                        : never
+Password inactive                                       : never
+Account expires                                         : never
+Minimum number of days between password change          : 0
+Maximum number of days between password change          : 99999
+Number of days of warning before password expires       : 7
+
+sudo chage -M 60 -W 7 $USER   → set the maximum number of days between password changes (-M) to 60 and the number of days of warning before password expiration (-W) to 7 for the 										currently logged-in user ($USER).
+To set the account expiration for a user in Ubuntu
+sudo chage -E YYYY-MM-DD username
+sudo chage -E 2023-12-31 john  → For example, if you want to set the account for the user "john" to expire on December 31, 2023
+
+
+
+
